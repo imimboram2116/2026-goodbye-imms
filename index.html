@@ -54,7 +54,7 @@
   .fill { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   /* 키비주얼 동물 이름 말풍선: (left, top) = 꼬리 끝. 누르면 잠깐 보였다 사라짐 */
   .hit { padding: 0; border: 0; background: none; cursor: pointer; -webkit-tap-highlight-color: transparent; }
-  .who { transform: translate(-50%, calc(-100% - var(--u) * 6)) scale(.8); transform-origin: 50% 100%; opacity: 0; pointer-events: none; transition: opacity .15s, transform .15s; padding: calc(var(--u) * 4) calc(var(--u) * 12); background: #fff; border-radius: calc(var(--u) * 22); box-shadow: 0 calc(var(--u) * 4) calc(var(--u) * 10) rgba(102,26,0,.25); color: var(--blue); font-weight: 700; font-size: calc(var(--u) * 15); line-height: normal; white-space: nowrap; }
+  .who { transform: translate(-50%, calc(-100% - var(--u) * 6)) scale(.8); transform-origin: 50% 100%; opacity: 0; pointer-events: none; transition: opacity .15s, transform .15s; padding: calc(var(--u) * 4) calc(var(--u) * 12); background: #fff; border-radius: calc(var(--u) * 22); box-shadow: 0 calc(var(--u) * 4) calc(var(--u) * 10) rgba(102,26,0,.25); color: var(--blue); font-weight: 600; font-size: calc(var(--u) * 15); line-height: normal; white-space: nowrap; }
   .who::after { content: ""; position: absolute; left: 50%; bottom: calc(var(--u) * -6 + 1px); transform: translateX(-50%); border: calc(var(--u) * 6) solid transparent; border-bottom: 0; border-top-color: #fff; }
   .who.on { opacity: 1; transform: translate(-50%, calc(-100% - var(--u) * 6)); }
   /* 흰 배경 위(아래 줄 동물)는 남색 말풍선 */
