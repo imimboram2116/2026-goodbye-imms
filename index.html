@@ -52,6 +52,11 @@
   .notes li + li { margin-top: calc(var(--u) * 6); }  /* 불렛 항목 사이 6px 추가 */
   .notes small { font-size: calc(var(--u) * 14); color: rgba(36, 33, 117, .37); }
   .fill { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  /* 키비주얼 동물 이름 말풍선: (left, top) = 꼬리 끝. 누르면 잠깐 보였다 사라짐 */
+  .hit { padding: 0; border: 0; background: none; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .who { transform: translate(-50%, calc(-100% - var(--u) * 6)) scale(.8); transform-origin: 50% 100%; opacity: 0; pointer-events: none; transition: opacity .15s, transform .15s; padding: calc(var(--u) * 4) calc(var(--u) * 12); background: #fff; border-radius: calc(var(--u) * 22); box-shadow: 0 calc(var(--u) * 4) calc(var(--u) * 10) rgba(102,26,0,.25); color: var(--blue); font-weight: 700; font-size: calc(var(--u) * 15); line-height: normal; white-space: nowrap; }
+  .who::after { content: ""; position: absolute; left: 50%; bottom: calc(var(--u) * -6 + 1px); transform: translateX(-50%); border: calc(var(--u) * 6) solid transparent; border-bottom: 0; border-top-color: #fff; }
+  .who.on { opacity: 1; transform: translate(-50%, calc(-100% - var(--u) * 6)); }
 </style>
 </head>
 <body>
@@ -90,6 +95,12 @@
       <img src="img/sprite.jpg" alt="" style="height:503.64%;left:-532.5%;top:-146.36%;width:632.5%">
     </div>
   </div>
+
+  <!-- 원숭이·양 누르면 이름 말풍선 -->
+  <button class="hit" type="button" data-who="who-monkey" aria-label="원숭이: 현수" style="left:calc(var(--u)*125);top:calc(var(--u)*184);width:calc(var(--u)*74);height:calc(var(--u)*86)"></button>
+  <button class="hit" type="button" data-who="who-sheep" aria-label="양: 혜지" style="left:calc(var(--u)*227);top:calc(var(--u)*210);width:calc(var(--u)*72);height:calc(var(--u)*75)"></button>
+  <div id="who-monkey" class="who" aria-hidden="true" style="left:calc(var(--u)*162);top:calc(var(--u)*180)">현수</div>
+  <div id="who-sheep" class="who" aria-hidden="true" style="left:calc(var(--u)*263);top:calc(var(--u)*208)">혜지</div>
 
   <!-- 제목 -->
   <p class="t" style="left:calc(var(--u)*195.5);top:calc(var(--u)*76);font-size:calc(var(--u)*20);line-height:calc(var(--u)*22);color:#fff;white-space:nowrap">2026년 굿굿바이</p>
@@ -168,6 +179,14 @@
 </main>
 </div>
 <script>
+  document.querySelectorAll('.hit').forEach((b) => {
+    const w = document.getElementById(b.dataset.who);
+    b.addEventListener('click', () => {
+      w.classList.add('on');
+      clearTimeout(w.timer);
+      w.timer = setTimeout(() => w.classList.remove('on'), 2000);
+    });
+  });
   document.getElementById('copy').addEventListener('click', async () => {
     try { await navigator.clipboard.writeText('1002-8664-8329'); } catch (e) { return; }
     const t = document.getElementById('toast');
