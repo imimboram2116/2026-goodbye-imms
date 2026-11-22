@@ -30,9 +30,9 @@
   .cell p { margin: 0; }
   .pre { line-height: 1.5; letter-spacing: calc(var(--u) * -0.3125); }
   .row { left: 0; width: 100%; display: flex; align-items: center; justify-content: center; gap: calc(var(--u) * 8); }
-  /* 유자 굴러오기: 왼쪽 화면 밖(이동 290px)에서 굴러와 제자리에 멈춤. 지름 약 34px → 약 2.7바퀴 */
-  #yuzu.roll { transform: translateX(calc(var(--u) * -290)) rotate(-980deg); }
-  #yuzu.roll.in { transform: none; transition: transform 1.4s cubic-bezier(.25, .8, .35, 1); }
+  /* 유자 또로록: '유' 글자 끝(유자 가운데가 유 끝에 오게, 22px 왼쪽)에서 작게 나와 제자리까지 굴러와 살짝 튕기며 멈춤 */
+  #yuzu.roll { transform: translateX(calc(var(--u) * -22)) rotate(-75deg) scale(.6); opacity: 0; }
+  #yuzu.roll.in { transform: none; opacity: 1; transition: transform .8s cubic-bezier(.34, 1.4, .5, 1), opacity .2s; }
   /* YOU 말풍선(몸통+꼬리) 위아래로 3px 살짝 */
   .bob { animation: bob 1.8s ease-in-out infinite; }
   @keyframes bob { 50% { transform: translateY(calc(var(--u) * -3)); } }
@@ -86,7 +86,7 @@
   <h1 class="t" style="left:50%;top:calc(var(--u)*129);font-family:'BaeminLove',sans-serif;font-weight:400;font-size:calc(var(--u)*60);line-height:calc(var(--u)*22);color:#fff;white-space:nowrap">같이 놀아유</h1>
 
   <!-- 소개 글 -->
-  <p class="t pre" style="left:50%;top:calc(var(--u)*479);width:100%">10월 어느 날 용인, 뜨끈하게 사우나를 즐기다가<br>불현듯 몇몇 동기들 보고 싶다는 생각을 하게 되었고<br>연말에 놀아보자며 꿍꿍이를 만들게 되는데...</p>
+  <p class="t pre" style="left:50%;top:calc(var(--u)*479);width:100%">10월 어느 날 용인, 뜨끈하게 사우나를 즐기다가<br>불현듯 몇몇 동기들 보고 싶다는 생각을 하게 되었고<br>연말에 모여 놀 궁리를 하게 되는데...</p>
 
   <!-- 종이 들고 있는 손 -->
   <!-- 마지막 칸만 세로로 20px 늘리려고 접힌 선 아래에서 두 조각으로 나눔 -->
@@ -187,7 +187,7 @@
       requestAnimationFrame(tick);
     })();
   });
-  // 유자 굴러오기 — 화면에 들어오면 한 번만. 움직임 줄이기 설정이면 처음부터 제자리
+  // 유자 또로록 — 화면에 들어오면 한 번만. 움직임 줄이기 설정이면 처음부터 제자리
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
     const y = document.getElementById('yuzu');
     y.classList.add('roll');
