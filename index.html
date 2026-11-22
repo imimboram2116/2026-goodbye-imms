@@ -3,7 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>2026년 굿굿바이 · 같이 놀아유</title>
+<title>2026년 굿굿바이 초대장</title>
+<meta name="description" content="오직 15명 리미티드 연말파티">
+<meta property="og:type" content="website">
+<meta property="og:title" content="2026년 굿굿바이 초대장">
+<meta property="og:description" content="오직 15명 리미티드 연말파티">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
   /* Figma 'invite'(390px 폭) 좌표를 그대로 옮기고, 화면 폭에 맞춰 비율로 늘리고 줄임 (최대 480px) */
@@ -26,6 +30,13 @@
   .cell p { margin: 0; }
   .pre { line-height: 1.5; letter-spacing: calc(var(--u) * -0.3125); }
   .row { left: 0; width: 100%; display: flex; align-items: center; justify-content: center; gap: calc(var(--u) * 8); }
+  /* 유자 굴러오기: 왼쪽 화면 밖(이동 290px)에서 굴러와 제자리에 멈춤. 지름 약 34px → 약 2.7바퀴 */
+  #yuzu.roll { transform: translateX(calc(var(--u) * -290)) rotate(-980deg); }
+  #yuzu.roll.in { transform: none; transition: transform 1.4s cubic-bezier(.25, .8, .35, 1); }
+  /* YOU 말풍선(몸통+꼬리) 위아래로 3px 살짝 */
+  .bob { animation: bob 1.8s ease-in-out infinite; }
+  @keyframes bob { 50% { transform: translateY(calc(var(--u) * -3)); } }
+  @media (prefers-reduced-motion: reduce) { .bob { animation: none; } }
   .crop { overflow: hidden; }
   .crop img { position: absolute; max-width: none; }
   .notes { margin: 0; padding-left: 1.5em; font-size: calc(var(--u) * 16); line-height: 1.5; letter-spacing: calc(var(--u) * -0.3125); color: var(--navy); }
@@ -84,10 +95,10 @@
 
   <!-- 유 (YOU 말풍선) 를 초대해유 -->
   <p class="t" style="left:calc(var(--u)*201);top:calc(var(--u)*578);width:calc(var(--u)*256);font-family:'BaeminLove',sans-serif;font-size:calc(var(--u)*20);color:var(--blue);letter-spacing:0;white-space:pre">유                 를 초대해유</p>
-  <div style="left:calc(var(--u)*156);top:calc(var(--u)*564);width:calc(var(--u)*16.07);height:calc(var(--u)*16.29);display:flex;align-items:center;justify-content:center">
+  <div class="bob" style="left:calc(var(--u)*156);top:calc(var(--u)*564);width:calc(var(--u)*16.07);height:calc(var(--u)*16.29);display:flex;align-items:center;justify-content:center">
     <img src="img/bubble-tail.svg" alt="" width="14" height="11.8428" style="flex:none;width:calc(var(--u)*14);height:calc(var(--u)*11.84);transform:rotate(20.11deg) scaleY(.99) skewX(5.84deg)">
   </div>
-  <div style="left:calc(var(--u)*138);top:calc(var(--u)*546);width:calc(var(--u)*55);height:calc(var(--u)*25);box-sizing:border-box;padding:calc(var(--u)*4) calc(var(--u)*12);overflow:hidden;background:#0e218e;border-radius:calc(var(--u)*22);box-shadow:0 calc(var(--u)*4) calc(var(--u)*10) rgba(102,26,0,.25);color:#fff;font-weight:700;font-size:calc(var(--u)*15);line-height:normal;white-space:nowrap">YOU</div>
+  <div class="bob" style="left:calc(var(--u)*138);top:calc(var(--u)*546);width:calc(var(--u)*55);height:calc(var(--u)*25);box-sizing:border-box;padding:calc(var(--u)*4) calc(var(--u)*12);overflow:hidden;background:#0e218e;border-radius:calc(var(--u)*22);box-shadow:0 calc(var(--u)*4) calc(var(--u)*10) rgba(102,26,0,.25);color:#fff;font-weight:700;font-size:calc(var(--u)*15);line-height:normal;white-space:nowrap">YOU</div>
 
   <!-- 종이 1칸: 일시 (큰 글씨와 작은 글씨를 한 묶음으로, 사이 8px) -->
   <div class="cell" style="top:calc(var(--u)*610)">
@@ -122,7 +133,7 @@
 
   <!-- 미리 읽어 두세유 -->
   <p class="t" style="left:50%;top:calc(var(--u)*1144);width:100%;font-family:'BaeminLove',sans-serif;font-size:calc(var(--u)*20);color:var(--blue);letter-spacing:0;white-space:pre">미리 읽어 두세유   <span style="visibility:hidden">ㅎ</span></p>
-  <img src="img/yuzu-icon.png" alt="" style="left:calc(var(--u)*245);top:calc(var(--u)*1111);width:calc(var(--u)*36);height:calc(var(--u)*33)">
+  <img id="yuzu" src="img/yuzu-icon.png" alt="" style="left:calc(var(--u)*245);top:calc(var(--u)*1111);width:calc(var(--u)*36);height:calc(var(--u)*33)">
   <ul class="notes" style="left:calc(var(--u)*24);top:calc(var(--u)*1164);width:calc(var(--u)*343)">
     <li>가게가 좁아서 인원을 더 추가하기는 어려워요.</li>
     <li>밤 12시까지 열어 둘게요. 2차는 기분따라!</li>
@@ -176,6 +187,15 @@
       requestAnimationFrame(tick);
     })();
   });
+  // 유자 굴러오기 — 화면에 들어오면 한 번만. 움직임 줄이기 설정이면 처음부터 제자리
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+    const y = document.getElementById('yuzu');
+    y.classList.add('roll');
+    const io = new IntersectionObserver((es) => {
+      if (es.some((e) => e.isIntersecting)) { y.getBoundingClientRect(); y.classList.add('in'); io.disconnect(); }
+    }, { rootMargin: '0px 0px -15% 0px' });
+    io.observe(y.previousElementSibling);  // 「미리 읽어 두세유」 제목 (유자는 화면 밖에 있어서 제목으로 판단)
+  }
 </script>
 </body>
 </html>
