@@ -57,6 +57,9 @@
   .who { transform: translate(-50%, calc(-100% - var(--u) * 6)) scale(.8); transform-origin: 50% 100%; opacity: 0; pointer-events: none; transition: opacity .15s, transform .15s; padding: calc(var(--u) * 4) calc(var(--u) * 12); background: #fff; border-radius: calc(var(--u) * 22); box-shadow: 0 calc(var(--u) * 4) calc(var(--u) * 10) rgba(102,26,0,.25); color: var(--blue); font-weight: 700; font-size: calc(var(--u) * 15); line-height: normal; white-space: nowrap; }
   .who::after { content: ""; position: absolute; left: 50%; bottom: calc(var(--u) * -6 + 1px); transform: translateX(-50%); border: calc(var(--u) * 6) solid transparent; border-bottom: 0; border-top-color: #fff; }
   .who.on { opacity: 1; transform: translate(-50%, calc(-100% - var(--u) * 6)); }
+  /* 흰 배경 위(아래 줄 동물)는 남색 말풍선 */
+  .who.dark { background: #0e218e; color: #fff; }
+  .who.dark::after { border-top-color: #0e218e; }
 </style>
 </head>
 <body>
@@ -96,11 +99,17 @@
     </div>
   </div>
 
-  <!-- 원숭이·양 누르면 이름 말풍선 -->
+  <!-- 동물 누르면 말풍선 (원숭이·양·카피바라 둘·호랑이) -->
   <button class="hit" type="button" data-who="who-monkey" aria-label="원숭이: 현수" style="left:calc(var(--u)*125);top:calc(var(--u)*184);width:calc(var(--u)*74);height:calc(var(--u)*86)"></button>
   <button class="hit" type="button" data-who="who-sheep" aria-label="양: 혜지" style="left:calc(var(--u)*227);top:calc(var(--u)*210);width:calc(var(--u)*72);height:calc(var(--u)*75)"></button>
   <div id="who-monkey" class="who" aria-hidden="true" style="left:calc(var(--u)*162);top:calc(var(--u)*180)">현수</div>
   <div id="who-sheep" class="who" aria-hidden="true" style="left:calc(var(--u)*263);top:calc(var(--u)*208)">혜지</div>
+  <button class="hit" type="button" data-who="who-capy1" aria-label="카피바라" style="left:calc(var(--u)*30);top:calc(var(--u)*276);width:calc(var(--u)*77);height:calc(var(--u)*63)"></button>
+  <button class="hit" type="button" data-who="who-capy2" aria-label="카피바라: 유즈유" style="left:calc(var(--u)*122);top:calc(var(--u)*286);width:calc(var(--u)*97);height:calc(var(--u)*79)"></button>
+  <button class="hit" type="button" data-who="who-tiger" aria-label="호랑이: 어흥" style="left:calc(var(--u)*252);top:calc(var(--u)*288);width:calc(var(--u)*94);height:calc(var(--u)*72)"></button>
+  <div id="who-capy1" class="who dark" aria-hidden="true" style="left:calc(var(--u)*70);top:calc(var(--u)*274)">카피바라</div>
+  <div id="who-capy2" class="who dark" aria-hidden="true" style="left:calc(var(--u)*186);top:calc(var(--u)*284)">유즈유</div>
+  <div id="who-tiger" class="who dark" aria-hidden="true" style="left:calc(var(--u)*316);top:calc(var(--u)*285)">어흥</div>
 
   <!-- 제목 -->
   <p class="t" style="left:calc(var(--u)*195.5);top:calc(var(--u)*76);font-size:calc(var(--u)*20);line-height:calc(var(--u)*22);color:#fff;white-space:nowrap">2026년 굿굿바이</p>
