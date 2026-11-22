@@ -22,6 +22,10 @@
   .pre { font-size: calc(var(--u) * 16); color: var(--navy); }
   .cherry { font-family: "GriunCherry", sans-serif; color: var(--blue); }
 
+  .cell { left: 0; width: 100%; display: flex; flex-direction: column; align-items: center; gap: calc(var(--u) * 8); text-align: center; letter-spacing: calc(var(--u) * -0.3125); }
+  .cell p { margin: 0; }
+  .pre { line-height: 1.5; letter-spacing: calc(var(--u) * -0.3125); }
+  .row { left: 0; width: 100%; display: flex; align-items: center; justify-content: center; gap: calc(var(--u) * 8); }
   .crop { overflow: hidden; }
   .crop img { position: absolute; max-width: none; }
   .notes { margin: 0; padding-left: 1.5em; font-size: calc(var(--u) * 16); line-height: 1.5; letter-spacing: calc(var(--u) * -0.3125); color: var(--navy); }
@@ -82,24 +86,35 @@
   </div>
   <div style="left:calc(var(--u)*138);top:calc(var(--u)*546);width:calc(var(--u)*55);height:calc(var(--u)*25);box-sizing:border-box;padding:calc(var(--u)*4) calc(var(--u)*12);overflow:hidden;background:#0e218e;border-radius:calc(var(--u)*22);box-shadow:0 calc(var(--u)*4) calc(var(--u)*10) rgba(102,26,0,.25);color:#fff;font-weight:700;font-size:calc(var(--u)*15);line-height:normal;white-space:nowrap">YOU</div>
 
-  <!-- 종이 1칸: 일시 -->
-  <p class="t cherry" style="left:calc(var(--u)*201.51);top:calc(var(--u)*688.27);width:100%;font-size:calc(var(--u)*30);line-height:1.2">2026년 12월 11일<br>금요일 저녁 7시~</p>
-  <p class="t pre" style="left:50%;top:calc(var(--u)*757);width:100%">더 늦게 되면 미리 알려 주세요<br>소소한 이벤트가 준비되.. (속닥)</p>
+  <!-- 종이 1칸: 일시 (큰 글씨와 작은 글씨를 한 묶음으로, 사이 8px) -->
+  <div class="cell" style="top:calc(var(--u)*610)">
+    <p class="cherry" style="font-size:calc(var(--u)*30);line-height:1.2">2026년 12월 11일<br>금요일 저녁 7시~</p>
+    <p class="pre">더 늦게 되면 미리 알려 주세요<br>소소한 이벤트가 준비되.. (속닥)</p>
+  </div>
 
   <!-- 종이 2칸: 장소 -->
   <p class="t cherry" style="left:calc(var(--u)*105.35);top:calc(var(--u)*828.73);width:calc(var(--u)*96.17);font-size:calc(var(--u)*20)">양재 술집</p>
   <div style="left:calc(var(--u)*141.02);top:calc(var(--u)*786.12);width:calc(var(--u)*168.37);height:calc(var(--u)*42.7)">
     <img class="fill" src="img/yuzuyu.png" alt="YUZUYU">
   </div>
-  <p class="t pre" style="left:calc(var(--u)*157.5);top:calc(var(--u)*878);width:calc(var(--u)*267)">현수와 혜지와 보람의 사랑방</p>
-  <a href="https://map.naver.com/p/entry/place/1048029774" target="_blank" rel="noopener" style="left:calc(var(--u)*265.63);top:calc(var(--u)*839.59);width:calc(var(--u)*57.1);height:calc(var(--u)*27.65);box-sizing:border-box;display:flex;align-items:center;justify-content:center;background:var(--blue);border-radius:calc(var(--u)*15);color:#fff;text-decoration:none;font-weight:700;font-size:calc(var(--u)*13);white-space:nowrap">길찾기</a>
+  <div class="row" style="top:calc(var(--u)*839)">
+    <span class="pre">현수와 혜지와 보람의 사랑방</span>
+    <a href="https://map.naver.com/p/entry/place/1048029774" target="_blank" rel="noopener" style="flex:none;width:calc(var(--u)*57.1);height:calc(var(--u)*27.65);display:flex;align-items:center;justify-content:center;background:var(--blue);border-radius:calc(var(--u)*15);color:#fff;text-decoration:none;font-weight:700;font-size:calc(var(--u)*13);white-space:nowrap">길찾기</a>
+  </div>
 
   <!-- 종이 3칸: 참가비 -->
-  <p class="t cherry" style="left:calc(var(--u)*199.52);top:calc(var(--u)*949.2);width:calc(var(--u)*244.43);font-size:calc(var(--u)*30)">참가비 11만원 + <span style="font-family:'Pretendard',sans-serif;font-weight:700">α</span></p>
-  <p class="t pre" style="left:50%;top:calc(var(--u)*1011);width:100%">대관을 포함해 식사, 주류에 대한 최소 비용이에요<br>토스뱅크 1002-8664-8329<span style="display:inline-block;width:calc(var(--u)*45)"></span></p>
-  <button id="copy" type="button" aria-label="계좌번호 복사" style="left:calc(var(--u)*288);top:calc(var(--u)*986);width:calc(var(--u)*28);height:calc(var(--u)*28);padding:0;border:0;background:none;border-radius:calc(var(--u)*6);display:flex;align-items:center;justify-content:center;cursor:pointer">
-    <img src="img/copy-icon.svg" alt="" width="18" height="18" style="width:calc(var(--u)*18);height:calc(var(--u)*18)">
-  </button>
+  <div class="cell" style="top:calc(var(--u)*911)">
+    <p class="cherry" style="font-size:calc(var(--u)*30);line-height:1.2">참가비 11만원 + <span style="font-family:'Pretendard',sans-serif;font-weight:700">α</span></p>
+    <div>
+      <p class="pre">대관을 포함해 식사, 주류에 대한 최소 비용이에요</p>
+      <div class="row" style="position:static">
+        <span class="pre">토스뱅크 1002-8664-8329</span>
+        <button id="copy" type="button" aria-label="계좌번호 복사" style="flex:none;width:calc(var(--u)*28);height:calc(var(--u)*28);padding:0;border:0;background:none;border-radius:calc(var(--u)*6);display:flex;align-items:center;justify-content:center;cursor:pointer">
+          <img src="img/copy-icon.svg" alt="" width="18" height="18" style="width:calc(var(--u)*18);height:calc(var(--u)*18)">
+        </button>
+      </div>
+    </div>
+  </div>
   <p id="toast" class="t pre" style="left:50%;top:calc(var(--u)*1060);font-size:calc(var(--u)*13);opacity:0;transition:opacity .2s">계좌번호를 복사했어요</p>
 
   <!-- 미리 읽어 두세유 -->
