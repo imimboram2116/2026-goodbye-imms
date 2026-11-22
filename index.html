@@ -51,6 +51,9 @@
     <img src="img/sprite.jpg" alt="" style="height:255.3%;left:-368.52%;top:0;width:468.52%">
   </div>
 
+  <!-- 내리는 눈 (동물 그림 뒤 층이라 남색 배경 위에서만 보임) -->
+  <canvas id="snow" aria-hidden="true" style="left:0;top:0;width:100%;height:calc(var(--u)*237);pointer-events:none"></canvas>
+
   <!-- 동물 목욕 그림 + 뒤쪽 흰 타원 -->
   <img src="img/ellipse2.svg" alt="" width="10" height="16" style="left:calc(var(--u)*129);top:calc(var(--u)*212);width:calc(var(--u)*10);height:calc(var(--u)*16)">
   <img src="img/ellipse3.svg" alt="" width="15" height="16" style="left:calc(var(--u)*184);top:calc(var(--u)*222);width:calc(var(--u)*15);height:calc(var(--u)*16)">
@@ -149,6 +152,29 @@
     t.style.opacity = 1;
     setTimeout(() => { t.style.opacity = 0; }, 1500);
   });
+  // 상단 눈 내리기 — 움직임 줄이기 설정을 켠 사람에게는 멈춤
+  (() => {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const c = document.getElementById('snow'), ctx = c.getContext('2d');
+    let w, h, flakes = [];
+    const resize = () => {
+      const r = c.getBoundingClientRect(), d = devicePixelRatio || 1;
+      w = r.width; h = r.height; c.width = w * d; c.height = h * d; ctx.setTransform(d, 0, 0, d, 0, 0);
+    };
+    const make = (y) => ({ x: Math.random() * w, y: y ?? Math.random() * h, r: (w / 390) * (1 + Math.random() * 2),
+      v: (w / 390) * (0.3 + Math.random() * 0.5), a: Math.random() * 6.28, o: 0.6 + Math.random() * 0.4 });
+    resize(); flakes = Array.from({ length: 45 }, () => make());
+    addEventListener('resize', resize);
+    (function tick() {
+      ctx.clearRect(0, 0, w, h);
+      for (const f of flakes) {
+        f.y += f.v; f.a += 0.01; f.x += Math.sin(f.a) * 0.3;
+        if (f.y > h + 4) Object.assign(f, make(-4));
+        ctx.globalAlpha = f.o; ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, 6.28); ctx.fillStyle = '#fff'; ctx.fill();
+      }
+      requestAnimationFrame(tick);
+    })();
+  })();
 </script>
 </body>
 </html>
