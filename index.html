@@ -18,7 +18,7 @@
   html, body { margin: 0; background: #fff; }
   body { font-family: "Pretendard", system-ui, sans-serif; -webkit-text-size-adjust: 100%; word-break: keep-all; }
   .wrap { width: min(100%, 480px); margin: 0 auto; container-type: inline-size; overflow: hidden; }
-  .stage { --u: calc(100cqw / 390); position: relative; width: 100cqw; height: calc(var(--u) * 1652); }
+  .stage { --u: calc(100cqw / 390); position: relative; width: 100cqw; height: calc(var(--u) * 1676); }
   .stage > * { position: absolute; }
 
   /* 글자 박스: Figma처럼 (left, top) = 박스 아래쪽 가운데 */
@@ -89,9 +89,9 @@
   <p class="t pre" style="left:50%;top:calc(var(--u)*479);width:100%">10월 어느 날 용인, 뜨끈하게 사우나를 즐기다가<br>불현듯 몇몇 동기들 보고 싶다는 생각을 하게 되었고<br>연말에 모여 놀 궁리를 하게 되는데...</p>
 
   <!-- 종이 들고 있는 손 -->
-  <!-- 마지막 칸만 세로로 20px 늘리려고 접힌 선 아래에서 두 조각으로 나눔 -->
+  <!-- 마지막 칸만 세로로 44px 늘리려고 접힌 선 아래에서 두 조각으로 나눔 -->
   <img src="img/paper-top.jpg" alt="" style="left:calc(var(--u)*-94);top:calc(var(--u)*571);width:calc(var(--u)*568);height:calc(var(--u)*326.6)">
-  <img src="img/paper-bottom.jpg" alt="" style="left:calc(var(--u)*-94);top:calc(var(--u)*897.3);width:calc(var(--u)*568);height:calc(var(--u)*166.6)">
+  <img src="img/paper-bottom.jpg" alt="" style="left:calc(var(--u)*-94);top:calc(var(--u)*897.3);width:calc(var(--u)*568);height:calc(var(--u)*190.6)">
 
   <!-- 유 (YOU 말풍선) 를 초대해유 -->
   <p class="t" style="left:calc(var(--u)*201);top:calc(var(--u)*578);width:calc(var(--u)*256);font-family:'BaeminLove',sans-serif;font-size:calc(var(--u)*20);color:var(--blue);letter-spacing:0;white-space:pre">유                 를 초대해유</p>
@@ -117,10 +117,10 @@
   </div>
 
   <!-- 종이 3칸: 참가비 -->
-  <div class="cell" style="top:calc(var(--u)*921)">
+  <div class="cell" style="top:calc(var(--u)*929)">
     <p class="cherry" style="font-size:calc(var(--u)*30);line-height:1.2">참가비 11만원 + <span style="font-family:'Pretendard',sans-serif;font-weight:700">α</span></p>
     <div>
-      <p class="pre">대관을 포함해 식사, 주류에 대한 최소 비용이에요</p>
+      <p class="pre">대관을 포함해 식사, 주류에 대한 최소 비용이에요<br>참가를 희망하시면 미리 입금해 주세요!</p>
       <div class="row" style="position:static">
         <span class="pre">토스뱅크 1002-8664-8329</span>
         <button id="copy" type="button" aria-label="계좌번호 복사" style="flex:none;width:calc(var(--u)*28);height:calc(var(--u)*28);padding:0;border:0;background:none;border-radius:calc(var(--u)*6);display:flex;align-items:center;justify-content:center;cursor:pointer">
@@ -129,12 +129,12 @@
       </div>
     </div>
   </div>
-  <p id="toast" class="t pre" style="left:50%;top:calc(var(--u)*1080);font-size:calc(var(--u)*13);opacity:0;transition:opacity .2s">계좌번호를 복사했어요</p>
+  <p id="toast" class="t pre" style="left:50%;top:calc(var(--u)*1104);font-size:calc(var(--u)*13);opacity:0;transition:opacity .2s">계좌번호를 복사했어요</p>
 
   <!-- 미리 읽어 두세유 -->
-  <p class="t" style="left:50%;top:calc(var(--u)*1144);width:100%;font-family:'BaeminLove',sans-serif;font-size:calc(var(--u)*20);color:var(--blue);letter-spacing:0;white-space:pre">미리 읽어 두세유   <span style="visibility:hidden">ㅎ</span></p>
-  <img id="yuzu" src="img/yuzu-icon.png" alt="" style="left:calc(var(--u)*245);top:calc(var(--u)*1111);width:calc(var(--u)*36);height:calc(var(--u)*33)">
-  <ul class="notes" style="left:calc(var(--u)*24);top:calc(var(--u)*1164);width:calc(var(--u)*343)">
+  <p class="t" style="left:50%;top:calc(var(--u)*1168);width:100%;font-family:'BaeminLove',sans-serif;font-size:calc(var(--u)*20);color:var(--blue);letter-spacing:0;white-space:pre">미리 읽어 두세유   <span style="visibility:hidden">ㅎ</span></p>
+  <img id="yuzu" src="img/yuzu-icon.png" alt="" style="left:calc(var(--u)*245);top:calc(var(--u)*1135);width:calc(var(--u)*36);height:calc(var(--u)*33)">
+  <ul class="notes" style="left:calc(var(--u)*24);top:calc(var(--u)*1188);width:calc(var(--u)*343)">
     <li>가게가 좁아서 인원을 더 추가하기는 어려워요.</li>
     <li>밤 12시까지 열어 둘게요. 2차는 기분따라!</li>
     <li>먹고 마시는 것에 따라 추가로 더 정산할 수 있어요.<br><small>오후 11시 전에 귀가하더라도 추가 정산은 함께 ^.^ ~</small></li>
@@ -143,17 +143,17 @@
     <li>혹시 콜키지가 필요하면 임보람에게 연락 주세요.</li>
   </ul>
 
-  <p class="t cherry" style="left:calc(var(--u)*200);top:calc(var(--u)*1457);width:100%;font-size:calc(var(--u)*20)">곧 카톡방으로 먼저 모시겠습니다</p>
+  <p class="t cherry" style="left:calc(var(--u)*200);top:calc(var(--u)*1481);width:100%;font-size:calc(var(--u)*20)">곧 카톡방으로 먼저 모시겠습니다</p>
 
   <!-- 하단: 남색 배경(위아래 뒤집음) + 리스 + Good Goodbye -->
-  <div style="left:calc(var(--u)*-12);top:calc(var(--u)*1462);width:calc(var(--u)*434);height:calc(var(--u)*264);transform:scaleY(-1)">
+  <div style="left:calc(var(--u)*-12);top:calc(var(--u)*1486);width:calc(var(--u)*434);height:calc(var(--u)*264);transform:scaleY(-1)">
     <img class="fill" src="img/top-bg.jpg" alt="">
   </div>
-  <div class="crop" style="left:calc(var(--u)*-5);top:calc(var(--u)*1484);width:calc(var(--u)*418);height:calc(var(--u)*179)">
+  <div class="crop" style="left:calc(var(--u)*-5);top:calc(var(--u)*1508);width:calc(var(--u)*418);height:calc(var(--u)*179)">
     <img src="img/wreath.jpg" alt="" style="left:0;top:3.59%;width:100%;height:100.08%">
   </div>
-  <canvas class="snow" aria-hidden="true" style="left:0;top:calc(var(--u)*1462);width:100%;height:calc(var(--u)*190);pointer-events:none"></canvas>
-  <p class="cherry" style="left:calc(var(--u)*138);top:calc(var(--u)*1553);margin:0;font-size:calc(var(--u)*20);line-height:1.5;color:#fff;letter-spacing:calc(var(--u)*-0.3125);white-space:nowrap">Good Goodbye</p>
+  <canvas class="snow" aria-hidden="true" style="left:0;top:calc(var(--u)*1486);width:100%;height:calc(var(--u)*190);pointer-events:none"></canvas>
+  <p class="cherry" style="left:calc(var(--u)*138);top:calc(var(--u)*1577);margin:0;font-size:calc(var(--u)*20);line-height:1.5;color:#fff;letter-spacing:calc(var(--u)*-0.3125);white-space:nowrap">Good Goodbye</p>
 
 </main>
 </div>
